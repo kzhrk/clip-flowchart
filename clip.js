@@ -3,11 +3,11 @@ const fs = require('fs');
 
 const port = process.env.PORT || 3333;
 
-(async () => {
+module.exports = async () => {
   const files = fs.readdirSync('./chart');
 
   files.forEach(async file => {
-    const url = `http://localhost:${port}/${file}`;
+    const url = `http://localhost:${port}/chart/${file}`;
     const browser = await puppeteer.launch({headless: true});
     const page = await browser.newPage();
 
@@ -27,4 +27,4 @@ const port = process.env.PORT || 3333;
 
     browser.close();
   });
-})();
+}

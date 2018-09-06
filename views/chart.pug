@@ -6,7 +6,7 @@ html(lang="ja")
     meta(http-equiv="X-UA-Compatible", content="ie=edge")
     title Clip Flowchart
   body
-    ul
-      each path in paths
-        li
-          a(href=`${path}`) #{path}
+    .mermaid #{mermaid}
+    script(src="/mermaid.js")
+    script.
+      mermaid.initialize({startOnLoad: true, theme: 'forest'});

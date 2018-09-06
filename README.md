@@ -8,7 +8,7 @@ Clip Flowchart
 - `chart`ディレクトリにmermaidのスクリプトファイルを追加
 - `npm start`で`dist`ディレクトリにPNG画像を出力
 
-http://localhost:3333/mermaidのスクリプトファイル名でmermaidのレンダリング確認。
+http://localhost:3333/ でmermaidのレンダリング確認。
 
 `npm start`はport引数でlocalhostのPort番号変更が可能。
 

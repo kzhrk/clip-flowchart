@@ -18,16 +18,26 @@ app.use(bodyParser.json());
 app.use('/mermaid.js', express.static(path.resolve(__dirname, './node_modules/mermaid/dist/mermaid.min.js')));
 
 app
-	.get('/:file', (req, res)=>{
+	.get('/', (req, res) => {
+    const files = fs.readdirSync('./chart');
+    const paths = files.map((file) => {
+      return '/chart/' + file;
+    });
+
+    res.render('index', {
+      paths
+    });
+  })
+  .get('/chart/:file', (req, res) => {
     const filePath = `./chart/${req.params.file}`;
 
     if (!fs.existsSync(filePath)) {
-      res.send(404);
+      res.sendStatus(404);
     } else {
-      res.render('index', {
+      res.render('chart', {
         mermaid: fs.readFileSync(filePath)
       });
     }
-	});
+  });
 
 app.listen(port);
